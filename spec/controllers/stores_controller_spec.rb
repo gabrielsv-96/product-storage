@@ -6,27 +6,27 @@ RSpec.describe StoresController do
   end
 
   it 'should get index' do
-    get :index, format: :json
+    get :index, as: :json
     expect(response).to have_http_status(200)
   end
 
   it 'should create store' do
-    post :create, params: { name: Faker::App.name, address: Faker::Address.street_address }, format: :json
+    post :create, params: { name: Faker::App.name, address: Faker::Address.street_address }, as: :json
     expect(response).to have_http_status(201)
   end
 
   it 'should show store' do
-    get :show, params: { id: @store.id }, format: :json
+    get :show, params: { id: @store.id }, as: :json
     expect(response).to have_http_status(200)
   end
 
   it 'should update store' do
-    patch :update, params: { id: @store.id, name: Faker::App.name }, format: :json
+    patch :update, params: { id: @store.id, name: Faker::App.name }, as: :json
     expect(response).to have_http_status(200)
   end
 
   it 'should destroy store' do
-    delete :destroy, params: { id: @store.id }, format: :json
+    delete :destroy, params: { id: @store.id }, as: :json
     expect(response).to have_http_status(204)
   end
 end

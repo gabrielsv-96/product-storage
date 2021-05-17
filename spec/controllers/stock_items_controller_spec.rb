@@ -8,17 +8,17 @@ RSpec.describe StockItemsController do
   end
 
   it 'should get index' do
-    get :index, format: :json
+    get :index, as: :json
     expect(response).to have_http_status(200)
   end
 
   it 'should create stock' do
-    post :create, params: { quantity: rand(1..200), product_id: @product.id, store_id: @store.id }, format: :json
+    post :create, params: { quantity: rand(1..200), product_id: @product.id, store_id: @store.id }, as: :json
     expect(response).to have_http_status(201)
   end
 
   it 'should show stock' do
-    get :show, params: { id: @stock_item.id }, format: :json
+    get :show, params: { id: @stock_item.id }, as: :json
     expect(response).to have_http_status(200)
   end
 
@@ -26,7 +26,7 @@ RSpec.describe StockItemsController do
     previous_quantity = @stock_item.quantity
     to_increase = rand(1..100)
 
-    patch :update, params: { id: @stock_item.id, quantity_add: to_increase }, format: :json
+    patch :update, params: { id: @stock_item.id, quantity_add: to_increase }, as: :json
     updated_stock = StockItem.find(@stock_item.id)
 
     expect(response).to have_http_status(200)
@@ -37,7 +37,7 @@ RSpec.describe StockItemsController do
     previous_quantity = @stock_item.quantity
     to_decrease = rand(1..100)
 
-    patch :update, params: { id: @stock_item.id, quantity_take: to_decrease }, format: :json
+    patch :update, params: { id: @stock_item.id, quantity_take: to_decrease }, as: :json
     updated_stock = StockItem.find(@stock_item.id)
     
     expect(response).to have_http_status(200)
@@ -45,7 +45,7 @@ RSpec.describe StockItemsController do
   end
 
   it 'should destroy stock' do
-    delete :destroy, params: { id: @stock_item.id }, format: :json
+    delete :destroy, params: { id: @stock_item.id }, as: :json
     expect(response).to have_http_status(204)
   end
 end

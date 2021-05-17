@@ -9,6 +9,7 @@ gem 'puma', '~> 3.11'
 gem 'jbuilder', '~> 2.5'
 gem 'faker', '~> 2.18'
 gem 'bootsnap', '>= 1.1.0', require: false
+gem 'apipie-rails', '~> 0.5.18'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]

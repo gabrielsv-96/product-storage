@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  apipie
   resources :stock_items
   resources :stores
   resources :products
