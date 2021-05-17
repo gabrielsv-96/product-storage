@@ -11,7 +11,7 @@ RSpec.describe ProductsController do
   end
 
   it 'should create product' do
-    post :create, params: { product: { name: Faker::App.name, price: rand(1.00...2000.00) } }, format: :json
+    post :create, params: { name: Faker::App.name, price: rand(1.00...2000.00) }, format: :json
     expect(response).to have_http_status(201)
   end
 
@@ -21,7 +21,7 @@ RSpec.describe ProductsController do
   end
 
   it 'should update product' do
-    patch :update, params: { id: @product.id, product: { name: Faker::App.name } }, format: :json
+    patch :update, params: { id: @product.id, name: Faker::App.name }, format: :json
     expect(response).to have_http_status(200)
   end
 

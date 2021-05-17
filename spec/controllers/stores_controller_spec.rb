@@ -11,7 +11,7 @@ RSpec.describe StoresController do
   end
 
   it 'should create store' do
-    post :create, params: { store: { name: Faker::App.name, address: Faker::Address.street_address } }, format: :json
+    post :create, params: { name: Faker::App.name, address: Faker::Address.street_address }, format: :json
     expect(response).to have_http_status(201)
   end
 
@@ -21,7 +21,7 @@ RSpec.describe StoresController do
   end
 
   it 'should update store' do
-    patch :update, params: { id: @store.id, store: { name: Faker::App.name } }, format: :json
+    patch :update, params: { id: @store.id, name: Faker::App.name }, format: :json
     expect(response).to have_http_status(200)
   end
 
