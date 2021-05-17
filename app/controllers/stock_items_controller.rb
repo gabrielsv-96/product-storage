@@ -37,9 +37,10 @@ class StockItemsController < ApplicationController
         render json: { error: 'Only one value is accepted in order for adding or taking from the quantity.' }, status: 400
       elsif stock_item_params[:quantity_add].blank? && stock_item_params[:quantity_take].blank?
         render json: { error: 'A value is required in order for adding or taking from the quantity.' }, status: 400
-      elsif stock_item_params[:quantity_take].present? && stock_item_params[:quantity_take] > @stock_item.quantity
+      elsif stock_item_params[:quantity_take].present? && stock_item_params[:quantity_take].to_i > @stock_item.quantity.to_i
         render json: { 
-          error: "There is not enough items in stock to take, there is #{@stock_item.quantity} items currently on stock and you are requiring #{stock_item_params[:quantity_take]} items." 
+          error: "There is not enough items in stock to take, there is #{@stock_item.quantity} items currently on stock"\
+          " and you are requiring #{stock_item_params[:quantity_take]} items." 
         }, status: 400
       end 
     end
